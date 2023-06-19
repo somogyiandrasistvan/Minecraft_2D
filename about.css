@@ -77,47 +77,33 @@ html {
 }
 
 body {
-  background-image: url("kepek/hatter.jpg");
+  background-image: url("Minecraft/kepek/hatter.jpg");
   max-width: 2050px;
   margin: auto;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-  "ar ar"
-  "as as"
-  "n n"
 }
 
 nav {
   margin: 0 auto;
   max-width: fit-content;
-  grid-area: n;
 }
 article {
-  margin: 0 auto;
-  max-width: 1100px;
-  display: flex;
-  flex-wrap: wrap;
-  grid-area: "ar";
+    color:white;
+    margin: 0 auto;
+    max-width: fit-content;
+    text-align: center;
+}
+
+h3{
+    padding: 5px;
+}
+p{
+    padding: 5px;
 }
 div {
   height: 50px;
   width: 50px;
   text-align: center;
   margin: 0px;
-}
-aside {
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  grid-area: as;
-}
-
-
-img {
-  height: 50px;
-  width: 50px;
 }
 
 #error-message {
