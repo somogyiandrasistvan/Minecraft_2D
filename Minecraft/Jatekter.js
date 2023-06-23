@@ -1,6 +1,6 @@
 import Block from "./Block.js";
 import Inventory from "./Inventory.js";
-
+import Karakter from "./Karakter.js";
 class Jatekter {
   #jatek = [
     [
@@ -427,24 +427,15 @@ class Jatekter {
     this.#kepekLista = kepekLista;
     this.#spawn();
     this.#init();
+
     $(window).on("balra", (event) => {
       this.#tarhely.push(event.detail);
       if (this.#tarhely.length == this.#JatekterDb) {
-        this.balra();
-      }
-    });
-
-    $(window).on("jobbra", (event) => {
-      this.#tarhely.push(event.detail);
-      if (this.#tarhely.length == this.#JatekterDb) {
-        this.jobbra();
-      }
-    });
-
-    $(window).on("fel", (event) => {
-      this.#tarhely.push(event.detail);
-      if (this.#tarhely.length == this.#JatekterDb) {
-        this.fel();
+        for (let i = 0; i < this.#tarhely.length; i++) {
+          if(this.#tarhely[i].getAllapot() == "K"){
+            this.block.SetMozgas(this.#tarhely[i-1])
+          }   
+        }
       }
     });
 
@@ -523,130 +514,6 @@ class Jatekter {
     }
   }
 
-  balra() {
-    for (let i = 0; i < this.#tarhely.length; i++) {
-      if (this.#tarhely[i].getAllapot() == "K") {
-        if (this.#tarhely[i - 1].getAllapot() == 0) {
-          this.#tarhely[i].setMozgas();
-          this.#tarhely[i - 1].setMozgas();
-          this.balrale(i);
-        } else if (
-          this.#tarhely[i - 1].getAllapot() != 0 &&
-          this.#tarhely[
-            i - this.#jatek[this.#foldszint].length - 1
-          ].getAllapot() == 0 &&
-          this.#tarhely[i - this.#jatek[this.#foldszint].length].getAllapot() ==
-            0
-        ) {
-          this.#tarhely[i].setMozgas();
-          this.#tarhely[
-            i - this.#jatek[this.#foldszint].length - 1
-          ].setMozgas();
-          this.#tarhely = $().empty();
-        } else {
-          this.#tarhely = $().empty();
-        }
-      }
-    }
-  }
-
-  jobbra() {
-    for (let i = 0; i < this.#tarhely.length; i++) {
-      if (this.#tarhely[i].getAllapot() == "K") {
-        if (this.#tarhely[i + 1].getAllapot() == 0) {
-          this.#tarhely[i].setMozgas();
-          this.#tarhely[i + 1].setMozgas();
-          this.jobbrale(i);
-        } else if (
-          this.#tarhely[i + 1].getAllapot() != 0 &&
-          this.#tarhely[
-            i - this.#jatek[this.#foldszint].length + 1
-          ].getAllapot() == 0 &&
-          this.#tarhely[i - this.#jatek[this.#foldszint].length].getAllapot() ==
-            0
-        ) {
-          this.#tarhely[i].setMozgas();
-          this.#tarhely[
-            i - this.#jatek[this.#foldszint].length + 1
-          ].setMozgas();
-          this.#tarhely = $().empty();
-        } else {
-          this.#tarhely = $().empty();
-        }
-      }
-    }
-  }
-  fel() {
-    for (let i = 0; i < this.#tarhely.length; i++) {
-      if (this.#tarhely[i].getAllapot() == "K") {
-        if (
-          this.#tarhely[i].getY() != 0 &&
-          this.#tarhely[i - this.#jatek[this.#foldszint].length].getAllapot() ==
-            0
-        ) {
-          this.#tarhely[i].setMozgas();
-          this.#tarhely[i - this.#jatek[this.#foldszint].length].setMozgas();
-          setTimeout(() => {
-            this.le();
-          }, 300);
-        } else {
-          this.#tarhely = $().empty();
-        }
-      }
-    }
-  }
-
-  le() {
-    for (let i = 0; i < this.#tarhely.length; i++) {
-      if (this.#tarhely[i].getAllapot() == "K") {
-        let szam = i + this.#jatek[this.#foldszint].length;
-        if (this.#tarhely[szam].getAllapot() == 0) {
-          this.#tarhely[i].setMozgas();
-          this.#tarhely[i + this.#jatek[this.#foldszint].length].setMozgas();
-          this.#tarhely = $().empty();
-        }
-      }
-    }
-  }
-
-  balrale(i) {
-    let szorzo = 1;
-    let szam = i + this.#jatek[this.#foldszint].length - 1;
-    while (this.#tarhely[szam].getAllapot() == 0) {
-      szorzo++;
-      szam = i + this.#jatek[this.#foldszint].length * szorzo - 1;
-    }
-    szorzo = szorzo - 1;
-    let szam2 = i + this.#jatek[this.#foldszint].length * szorzo - 1;
-    if (this.#tarhely[szam2].getAllapot() == 0) {
-      this.#tarhely[i - 1].setMozgas();
-      this.#tarhely[szam2].setMozgas();
-      this.#tarhely = $().empty();
-    } else {
-      this.#tarhely = $().empty();
-    }
-    this.#tarhely = $().empty();
-  }
-
-  jobbrale(i) {
-    let szorzo = 1;
-    let szam = i + this.#jatek[this.#foldszint].length + 1;
-    while (this.#tarhely[szam].getAllapot() == 0) {
-      szorzo++;
-      szam = i + this.#jatek[this.#foldszint].length * szorzo + 1;
-    }
-    szorzo = szorzo - 1;
-    let szam2 = i + this.#jatek[this.#foldszint].length * szorzo + 1;
-    if (this.#tarhely[szam2].getAllapot() == 0) {
-      this.#tarhely[i + 1].setMozgas();
-      this.#tarhely[szam2].setMozgas();
-      this.#tarhely = $().empty();
-    } else {
-      this.#tarhely = $().empty();
-    }
-    this.#tarhely = $().empty();
-  }
-
   ellenorzes() {
     for (let i = 0; i < this.#kivalasztottBlockTarhely.length; i++) {
       if (this.#kivalasztottBlockTarhely[i].getAllapot() == "K") {
@@ -715,6 +582,7 @@ class Jatekter {
     }
     this.#kivalasztottBlockTarhely = $().empty();
   }
+
 }
 
 export default Jatekter;

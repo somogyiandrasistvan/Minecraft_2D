@@ -136,6 +136,14 @@ a::after {
   text-decoration: none;
 }
 
+#Karakter{
+  transform: translateX(10px), translateY(0px);
+  background-image: url(kepek/slime.PNG);
+  background-size: cover;
+  position: relative;
+}
+
+
 @media only screen and (max-width: 1143px) {
   #error-message {
     display: inline-flex;
