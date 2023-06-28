@@ -1,25 +1,32 @@
-const kepekLista = [
+export const Blockok = [
     "kepek/fold.PNG",
-    "kepek/eg.PNG",
     "kepek/fu.PNG",
     "kepek/ko.PNG",
-    "kepek/bedrock.PNG",
-    "kepek/slime.PNG",
     "kepek/lava.PNG",
     "kepek/lomb.PNG",
     "kepek/fa.PNG",
-    "kepek/invFold.PNG",
-    "kepek/invFu.PNG",
-    "kepek/invKo.PNG",
-    "kepek/invFa.PNG",
-    "kepek/invBokor.PNG",
-    "kepek/invLava.PNG",
-    "kepek/invDeszka.PNG",
-    "kepek/invDeszkahatter.PNG",
     "kepek/deszka.jpg",
-    "kepek/deszkahatter.PNG",
-    "kepek/viz.jpg",
-    "kepek/invViz.PNG"
+    "kepek/bedrock.PNG"
   ];
-  
-  export default kepekLista;
+
+export const Hatterek = [
+  "kepek/eg.PNG",
+  "kepek/viz.jpg",
+  "kepek/deszkahatter.PNG"
+]
+
+export const Character = [
+  "kepek/slime.PNG",
+]
+
+export const Inventories = [
+  "kepek/invFold.PNG",
+  "kepek/invFu.PNG",
+  "kepek/invKo.PNG",
+  "kepek/invLava.PNG",
+  "kepek/invBokor.PNG",
+  "kepek/invFa.PNG",
+  "kepek/invDeszka.PNG",
+  "kepek/invDeszkahatter.PNG",
+  "kepek/invViz.PNG"
+]

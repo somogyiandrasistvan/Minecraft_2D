@@ -1,14 +1,15 @@
+import { Character } from "./adat.js";
+
 class Karakter {
   #szuloElem;
+  #kep
   constructor(szuloElem) {
-    console.log(szuloElem);
+    this.#kep = Character
     this.#szuloElem = szuloElem;
-    const DIV = $(`<div id=Karakter>`);
+    const IMG = $(`<img src="${this.#kep}" alt="kep">`);
+    const DIV = $(`<div class=Karakter>`);
+    DIV.append(IMG)
     szuloElem.append(DIV);
-    const KEP = $("#Karakter img");
-    KEP.css({
-      transform: `translateX(${0}px) translateY(${-54}px)`,
-    });
   }
 
   getSzuloElem() {

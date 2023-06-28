@@ -136,10 +136,8 @@ a::after {
   text-decoration: none;
 }
 
-#Karakter{
-  transform: translateX(10px), translateY(0px);
-  background-image: url(kepek/slime.PNG);
-  background-size: cover;
+.Karakter img{
+  bottom: 54px;
   position: relative;
 }
 
