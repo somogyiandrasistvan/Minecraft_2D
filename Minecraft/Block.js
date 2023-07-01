@@ -121,10 +121,10 @@ class Block {
         block.#imgElem.attr("src", this.#kepek[0][6]);
       } else if (csere == 7) {
         block.#allapot = 2;
-        block.#imgElem.attr("src", this.#kepek[1][2]);
+        block.#imgElem.attr("src", this.#kepek[1][1]);
       } else if (csere == 8) {
         block.#allapot = 7;
-        block.#imgElem.attr("src", this.#kepek[1][1]);
+        block.#imgElem.attr("src", this.#kepek[1][2]);
       } else {
         block.#allapot = 1;
         block.#imgElem.attr("src", this.#kepek[1][0]);

@@ -141,6 +141,13 @@ a::after {
   position: relative;
 }
 
+#block img{
+  bottom: 43px;
+  position: relative;
+  height: 30px;
+  width: 30px;
+}
+
 
 @media only screen and (max-width: 1143px) {
   #error-message {

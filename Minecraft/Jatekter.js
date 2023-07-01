@@ -423,8 +423,10 @@ class Jatekter {
   #kivalasztottBlockTarhely = [];
   #kivalasztottBlockHely = [];
   #inventoryBlock;
+  #inventoryBlockKep = [];
   #kepek = []
-  #kapcsolo = false;
+  #kapcsolo = true;
+  #valasztas = [2,2]
   constructor() {
     this.#kepek = Hatterek
 
@@ -432,16 +434,15 @@ class Jatekter {
     this.#init();
 
     $(window).on("balra", (event) => {
-      this.#kapcsolo = true
       let boolean = false
       this.#tarhely.push(event.detail);
       if (this.#tarhely.length == this.#JatekterDb) {
         for (let i = 0; i < this.#tarhely.length; i++) {
           if (this.#tarhely[i].getAllapot() == "K" && boolean == false && this.#falVane(this.#tarhely[i - 1]) == true) {
+            this.#eldontes(1)
             boolean = true
             this.#tarhely[i].setMozgas()
             this.#le(this.#tarhely, i, -1).setMozgas()
-
           }
         }
         this.#tarhely = $().empty()
@@ -449,12 +450,12 @@ class Jatekter {
     });
 
     $(window).on("jobbra", (event) => {
-      this.#kapcsolo = true
       let boolean = false
       this.#tarhely.push(event.detail);
       if (this.#tarhely.length == this.#JatekterDb) {
         for (let i = 0; i < this.#tarhely.length; i++) {
           if (this.#tarhely[i].getAllapot() == "K" && boolean == false && this.#falVane(this.#tarhely[i + 1]) == true) {
+            this.#eldontes(1)
             boolean = true
             this.#tarhely[i].setMozgas()
             this.#le(this.#tarhely, i, +1).setMozgas()
@@ -465,22 +466,23 @@ class Jatekter {
     });
 
     $(window).on("fel", (event) => {
-      this.#kapcsolo = false
       this.#tarhely2.push(event.detail);
       if (this.#tarhely2.length == this.#JatekterDb) {
         for (let i = 0; i < this.#tarhely2.length; i++) {
           if (this.#tarhely2[i].getAllapot() == "K") {
             if (this.#falVane(this.#tarhely2[i - this.#jatek[0].length]) == true) {
+              this.#eldontes(0)
               this.#tarhely2[i].setMozgas()
-              this.#tarhely2[i - 22].setMozgas();
+              this.#tarhely2[i - this.#jatek[0].length].setMozgas();
               setTimeout(() => {
-                if (this.#kapcsolo == false) {
+                if (this.#valasztas[0] != 1){
                   this.#tarhely2[i - this.#jatek[0].length].setMozgas();
                   this.#le(this.#tarhely2, i, 0).setMozgas()
                   this.#tarhely2 = $().empty()
+                  this.#valasztas = $().empty()
                 }
                 else {
-                  this.#kapcsolo = false
+                  console.log("csa")
                   this.#tarhely2 = $().empty()
                 }
               }, 500)
@@ -512,6 +514,17 @@ class Jatekter {
 
     $(window).on("adat", (event) => {
       this.#inventoryBlock = event.detail.getAllapot();
+      this.#inventoryBlockKep.push(event.detail);
+      if(this.#inventoryBlockKep.length == 1){
+        this.#inventoryBlockKep[0].kattintas(true)
+      }
+      else{
+        this.#inventoryBlockKep[0].kattintas(false);
+        this.#inventoryBlockKep[1].kattintas(true);
+        let ideiglenes = this.#inventoryBlockKep[1]
+        this.#inventoryBlockKep = $().empty();
+        this.#inventoryBlockKep.push(ideiglenes)
+      }
     });
   }
 
@@ -657,10 +670,19 @@ class Jatekter {
     }
     szorzo--
     let magassag = adat[i + this.#jatek[0].length * szorzo + plusz]
-    console.log(magassag)
     return magassag
   }
 
+  #eldontes(szam){
+    this.#valasztas.push(szam)
+    console.log(this.#valasztas)
+    for (let i = 0; i < this.#valasztas.length; i++) {
+      if(this.#valasztas[i] == 0){
+        this.#valasztas = $().empty()
+      }  
+    }
+
+  }
 }
 
 

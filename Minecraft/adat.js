@@ -2,7 +2,7 @@ export const Blockok = [
     "kepek/fold.PNG",
     "kepek/fu.PNG",
     "kepek/ko.PNG",
-    "kepek/lava.PNG",
+    "kepek/lava.webp",
     "kepek/lomb.PNG",
     "kepek/fa.PNG",
     "kepek/deszka.jpg",
@@ -20,13 +20,6 @@ export const Character = [
 ]
 
 export const Inventories = [
-  "kepek/invFold.PNG",
-  "kepek/invFu.PNG",
-  "kepek/invKo.PNG",
-  "kepek/invLava.PNG",
-  "kepek/invBokor.PNG",
-  "kepek/invFa.PNG",
-  "kepek/invDeszka.PNG",
-  "kepek/invDeszkahatter.PNG",
-  "kepek/invViz.PNG"
+  "kepek/inventory.PNG",
+  "kepek/inventory2.PNG"
 ]
