@@ -12,7 +12,7 @@ export const Blockok = [
 export const Hatterek = [
   "kepek/eg.PNG",
   "kepek/viz.jpg",
-  "kepek/deszkahatter.PNG"
+  "kepek/deszkahatter2.PNG"
 ]
 
 export const Character = [
@@ -20,6 +20,6 @@ export const Character = [
 ]
 
 export const Inventories = [
-  "kepek/inventory.PNG",
-  "kepek/inventory2.PNG"
+  "kepek/inventoryy.PNG",
+  "kepek/inventoryy2.PNG"
 ]
